@@ -1,0 +1,67 @@
+package com.example.jhordan.people_mvvm.viewmodel;
+
+import android.content.Context;
+import android.databinding.ObservableField;
+import android.databinding.ObservableInt;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import com.example.jhordan.people_mvvm.PeopleApplication;
+import com.example.jhordan.people_mvvm.R;
+import com.example.jhordan.people_mvvm.data.PeopleFactory;
+import com.example.jhordan.people_mvvm.data.PeopleResponse;
+import com.example.jhordan.people_mvvm.data.PeopleService;
+import com.example.jhordan.people_mvvm.model.People;
+import com.example.jhordan.people_mvvm.view.PeopleTabsAdapter;
+import com.example.jhordan.people_mvvm.view.TracksFragment;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+
+public class PagerViewModel extends Observable {
+    public ObservableInt peopleProgress;
+    public ObservableInt peopleLabel;
+    public ObservableInt peopleTabs;
+    public ObservableInt pagerView;
+    public ObservableField<String> messageLabel;
+
+    private List<People> peopleList;
+    private Context context;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+    public PagerViewModel(@NonNull Context context) {
+        this.context = context;
+        this.peopleList = new ArrayList<>();
+        peopleProgress = new ObservableInt(View.GONE);
+        peopleLabel = new ObservableInt(View.VISIBLE);
+        peopleTabs = new ObservableInt(View.VISIBLE);
+        messageLabel = new ObservableField<>(context.getString(R.string.default_loading_people));
+    }
+
+    //It is "public" to show an example of test
+    public void initializeViews() {
+        peopleLabel.set(View.GONE);
+        peopleProgress.set(View.VISIBLE);
+    }
+
+    public List<People> getPeopleList() {
+        return peopleList;
+    }
+
+    private void unSubscribeFromObservable() {
+        if (compositeDisposable != null && !compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
+        }
+    }
+
+    public void reset() {
+        unSubscribeFromObservable();
+        compositeDisposable = null;
+        context = null;
+    }
+
+}

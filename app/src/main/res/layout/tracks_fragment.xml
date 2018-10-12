@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="trackViewModel"
+            type="com.example.jhordan.people_mvvm.viewmodel.TracksViewModel"/>
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ProgressBar
+                android:id="@+id/progress_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:visibility="@{trackViewModel.peopleProgress}"/>
+
+            <TextView
+                android:id="@+id/label_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@{trackViewModel.messageLabel}"
+                app:visibility="@{trackViewModel.peopleLabel}"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_people"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray"
+                android:clipToPadding="false"
+                android:scrollbars="vertical"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:visibility="@{trackViewModel.peopleRecycler}"
+                tools:listitem="@layout/item_people" />
+
+
+        </LinearLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
