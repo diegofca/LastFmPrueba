@@ -40,6 +40,11 @@ android {
         unitTests.returnDefaultValues = true
     }
 
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
 }
 
 dependencies {
@@ -48,17 +53,24 @@ dependencies {
     implementation supportDependencies.design
     implementation supportDependencies.recyclerView
     implementation supportDependencies.cardView
+    implementation supportDependencies.constraint
+    implementation supportDependencies.support
 
     implementation retrofitDependencies.retrofit
     implementation retrofitDependencies.gson
     implementation retrofitDependencies.rxAdapterJava
+    implementation retrofitDependencies.okhttp3
 
     implementation rxDependencies.rxAndroid
     implementation rxDependencies.rxJava
 
     implementation circleImageView
-    implementation glide
+    implementation lottie
+    implementation picasso
+    implementation fancyButtons
+    implementation searchView
 
     testImplementation testingDependencies.junit
     testImplementation testingDependencies.mockito
+
 }

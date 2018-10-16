@@ -2,49 +2,101 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="trackViewModel"
-            type="com.example.jhordan.people_mvvm.viewmodel.TracksViewModel"/>
+            type="com.dev.android.lastf.viewmodel.Views.TracksViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:statusBarBackground="@color/colorAccent">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
+            android:gravity="top|center"
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <ProgressBar
-                android:id="@+id/progress_people"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:visibility="@{trackViewModel.peopleProgress}"/>
-
-            <TextView
-                android:id="@+id/label_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@{trackViewModel.messageLabel}"
-                app:visibility="@{trackViewModel.peopleLabel}"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/list_people"
+            <LinearLayout
+                android:id="@+id/reload"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/darker_gray"
+                android:gravity="top|center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_anchor="@+id/linearLayout"
+                app:layout_anchorGravity="bottom|center"
+                app:visibility="@{trackViewModel.trackErrorLayout}">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/error_load_anim"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_cacheStrategy="strong"
+                    app:lottie_colorFilter="@color/colorPrimaryDark"
+                    app:lottie_enableMergePathsForKitKatAndAbove="true"
+                    app:lottie_rawRes="@raw/recognizemusicfail" />
+
+                <TextView
+                    android:id="@+id/label_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{trackViewModel.messageLabel}"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:visibility="@{trackViewModel.trackLabel}" />
+
+                <com.rilixtech.materialfancybutton.MaterialFancyButton
+                    android:id="@+id/btn_reload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:onClick="@{trackViewModel::reloadData}"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="10dp"
+                    fancy:mfb_borderColor="@color/colorPrimaryDark"
+                    fancy:mfb_borderWidth="1dp"
+                    fancy:mfb_defaultColor="@color/colorPrimaryDark"
+                    fancy:mfb_focusColor="@color/colorAccent"
+                    fancy:mfb_iconFont="fontawesome.ttf"
+                    fancy:mfb_iconPosition="left"
+                    fancy:mfb_radius="30dp"
+                    fancy:mfb_text="Re-intentar"
+                    fancy:mfb_textColor="#FFFFFF">
+
+                </com.rilixtech.materialfancybutton.MaterialFancyButton>
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_track"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:visibility="@{trackViewModel.trackProgress}" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_track"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:scrollbars="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:visibility="@{trackViewModel.peopleRecycler}"
-                tools:listitem="@layout/item_people" />
+                app:visibility="@{trackViewModel.trackRecycler}"
+                tools:listitem="@layout/item_track">
+
+            </android.support.v7.widget.RecyclerView>
 
 
         </LinearLayout>

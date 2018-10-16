@@ -1,0 +1,52 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemArtistViewModel"
+            type="com.dev.android.lastf.viewmodel.Items.ItemArtistViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/itemArtist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:onClick="@{itemArtistViewModel::onItemClick}"
+        android:padding="@dimen/spacing_large">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_artist"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:imageUrl="@{itemArtistViewModel.getPictureProfile}" />
+
+        <TextView
+            android:id="@+id/label_name"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignTop="@+id/image_artist"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_toEndOf="@+id/image_artist"
+            android:gravity="left|center"
+            android:text="@{itemArtistViewModel.name}"
+            android:textColor="@color/whiteText"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/fav"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/label_listeners"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            app:lottie_cacheStrategy="strong"
+            app:lottie_colorFilter="@color/colorAccent"
+            app:lottie_enableMergePathsForKitKatAndAbove="true"
+            app:lottie_rawRes="@raw/bookmark_animation" />
+
+    </RelativeLayout>
+
+</layout>

@@ -6,6 +6,14 @@
 
     <string name="action_github">Github</string>
 
-    <string name="error_loading_people">There seems to have been some error.</string>
-    <string name="default_loading_people">Press the button to load people!</string>
+    <string name="error_loading">Error en la descarga, verfique su conexión.</string>
+
+    <string name="title_activity_splash">splashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="label_oyentes"> Oyentes</string>
+    <string name="label_reproducciones"> Reproducciones</string>
+
+
 </resources>

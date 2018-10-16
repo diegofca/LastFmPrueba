@@ -2,25 +2,34 @@ ext {
 
   //Version
   supportVersion = '27.1.1'
+  constraintVersion = '1.1.3'
 
   retrofitVersion = '2.3.0'
   rxAndroidVersion = '2.0.2'
   rxJavaVersion  = '2.1.7'
 
-  glideVersion = '3.6.1'
+  picassoVersion = '2.71828'
   circleImageVersion = '1.3.0'
+  lottieVersion = '2.5.5'
+  fancyVersion = '1.8.7'
+  searchVersion = '1.4.0'
 
   junitVersion = '4.12'
   mockitoVersion = '2.8.47'
+  okhttp3Version = '3.4.1'
 
   //Packages
   supportPackage = 'com.android.support'
+  supportPackageConstraint = 'com.android.support.constraint'
   retrofitPackage = 'com.squareup.retrofit2'
+  okhttp3Package = 'com.squareup.okhttp3'
 
   reactivePackage = 'io.reactivex.rxjava2'
-
-  glidePackage = 'com.github.bumptech.glide'
+  lottiePackage = 'com.airbnb.android'
+  fancyPackage = 'com.rilixtech'
+  picassoPackage = 'com.squareup.picasso'
   hdodenhofPackage = 'de.hdodenhof'
+  searchPackage = 'com.miguelcatalan'
 
 
   junitPackage = 'junit'
@@ -31,14 +40,18 @@ ext {
       design           : buildDependency(supportPackage, 'design', supportVersion),
       recyclerView     : buildDependency(supportPackage, 'recyclerview-v7', supportVersion),
       cardView         : buildDependency(supportPackage, 'cardview-v7', supportVersion),
-      appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion)
+      appCompat        : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
+      constraint       : buildDependency(supportPackageConstraint, 'constraint-layout', constraintVersion),
+      support          : buildDependency(supportPackage, 'support-v4', supportVersion) // 27.1.1
   ]
 
   retrofitDependencies = [
 
       retrofit     : buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
       gson         : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
-      rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)
+      rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion),
+      okhttp3      : buildDependency(okhttp3Package,  'logging-interceptor', okhttp3Version)
+
   ]
 
   rxDependencies = [
@@ -47,10 +60,11 @@ ext {
       rxJava   : buildDependency(reactivePackage,'rxjava',rxJavaVersion)
   ]
 
-
-  glide = buildDependency(glidePackage, 'glide', glideVersion)
   circleImageView = buildDependency(hdodenhofPackage, 'circleimageview', circleImageVersion)
-
+  lottie = buildDependency(lottiePackage, 'lottie', lottieVersion)
+  picasso = buildDependency(picassoPackage, 'picasso', picassoVersion)
+  fancyButtons = buildDependency(fancyPackage, 'materialfancybuttons', fancyVersion)
+  searchView =  buildDependency(searchPackage, 'materialsearchview', searchVersion)
 
   testingDependencies = [
 
