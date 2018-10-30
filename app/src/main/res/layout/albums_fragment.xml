@@ -8,7 +8,7 @@
     <data>
         <variable
             name="albumViewModel"
-            type="com.dev.android.lastf.viewmodel.Views.AlbumViewModel"/>
+            type="com.dev.android.complice.viewmodel.Views.AlbumViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

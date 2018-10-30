@@ -5,7 +5,7 @@
     <data>
         <variable
             name="trackViewModel"
-            type="com.dev.android.lastf.viewmodel.Items.ItemTrackViewModel"/>
+            type="com.dev.android.complice.viewmodel.Items.ItemTrackViewModel"/>
     </data>
 
     <RelativeLayout

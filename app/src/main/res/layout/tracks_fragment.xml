@@ -8,7 +8,7 @@
     <data>
         <variable
             name="trackViewModel"
-            type="com.dev.android.lastf.viewmodel.Views.TracksViewModel"/>
+            type="com.dev.android.complice.viewmodel.Views.TracksViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

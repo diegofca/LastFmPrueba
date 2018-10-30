@@ -5,7 +5,7 @@
     <data>
         <variable
             name="itemAlbumViewModel"
-            type="com.dev.android.lastf.viewmodel.Items.ItemAlbumViewModel"/>
+            type="com.dev.android.complice.viewmodel.Items.ItemAlbumViewModel"/>
     </data>
 
     <LinearLayout
